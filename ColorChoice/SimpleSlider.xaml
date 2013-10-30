@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="PThomann.Utilities.PopupScreenSystem.ColorChoice.SimpleSlider"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="25" d:DesignWidth="240">
+
+	<Grid x:Name="LayoutRoot">
+       <Rectangle x:Name="touchRectangle" IsHitTestVisible="True" Fill="#01010101" MouseLeftButtonDown="Touch_MouseLeftButtonDown" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+       <Rectangle x:Name="gradientRectangle" IsHitTestVisible="False"
+                   HorizontalAlignment="Stretch" Stroke="White" VerticalAlignment="Stretch" Margin="0 5 0 5">
+         <Rectangle.Fill>
+             <LinearGradientBrush x:Name="gradientBrush">
+                <GradientStop Color="#4499FF" Offset="0" />
+                <GradientStop Color="#4499FF" Offset="1" />
+             </LinearGradientBrush>
+          </Rectangle.Fill>
+       </Rectangle>
+       <Rectangle x:Name="leftBlackRectangle" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="0" Margin="0 6 0 6" Visibility="Collapsed" IsHitTestVisible="False" />
+       <Rectangle x:Name="rightBlackRectangle" Fill="Black" HorizontalAlignment="RIght" VerticalAlignment="Stretch" Width="240" Margin="1 6 1 6" IsHitTestVisible="False" />
+       <Rectangle x:Name="slider" IsHitTestVisible="False" RadiusX="3" RadiusY="3" HorizontalAlignment="Left" VerticalAlignment="Stretch" Stroke="White" StrokeThickness="2" Fill="Black" Width="12" />
+    </Grid>
+</UserControl>
