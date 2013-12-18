@@ -154,6 +154,7 @@ namespace PThomann.Utilities.PopupScreenSystem
 		/// <param name="e">Cancellable</param>
 		public static void BackPress(System.ComponentModel.CancelEventArgs e)
 		{
+			var screen = current;
 			if (current == null)
 				return; // no action required, no popups open, let page navigation do its work
 			current.DoBackpress(e);
@@ -161,8 +162,12 @@ namespace PThomann.Utilities.PopupScreenSystem
 				return;
 			e.Cancel = true;
 
-			if (current == null)	// occurs if Popups.HideAll() is executed from within a CloseAction.
+			if (current != screen)	// occurs if Popups are hidden / shown from within a CloseAction.
+			{
+				popupStack.Remove(screen);
+				screen.Hide();
 				return;
+			}
 
 			current.Hide();
 			if (current.LastScreen != null)
