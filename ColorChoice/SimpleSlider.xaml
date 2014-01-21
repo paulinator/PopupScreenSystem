@@ -10,7 +10,7 @@
     d:DesignHeight="25" d:DesignWidth="240">
 
 	<Grid x:Name="LayoutRoot">
-       <Rectangle x:Name="touchRectangle" IsHitTestVisible="True" Fill="#01010101" MouseLeftButtonDown="Touch_MouseLeftButtonDown" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+       <Rectangle x:Name="touchRectangle" IsHitTestVisible="True" Fill="#01010101" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
        <Rectangle x:Name="gradientRectangle" IsHitTestVisible="False"
                    HorizontalAlignment="Stretch" Stroke="White" VerticalAlignment="Stretch" Margin="0 5 0 5">
          <Rectangle.Fill>

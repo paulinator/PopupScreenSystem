@@ -303,6 +303,7 @@ namespace PThomann.Utilities.PopupScreenSystem.ColorChoice
 
 		static bool isMouseDown, wasMouseDown;
 		static SimpleSlider last;
+		DateTime mouseDown;
 
 		protected override void OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs e)
 		{
@@ -311,6 +312,7 @@ namespace PThomann.Utilities.PopupScreenSystem.ColorChoice
 				isMouseDown = true;
 				last = this;
 				OnMouseMove(e);
+				mouseDown = DateTime.Now;	// Do this after OnMouseMove so that one gets executed once before the 60ms break;
 			}
 		}
 		protected override void OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs e)
@@ -332,7 +334,7 @@ namespace PThomann.Utilities.PopupScreenSystem.ColorChoice
 		}
 		protected override void OnMouseMove(System.Windows.Input.MouseEventArgs e)
 		{
-			if (isMouseDown)
+			if (isMouseDown && DateTime.Now.Subtract(mouseDown).TotalMilliseconds > 60)	// don't create move events for 60ms after MouseDown.
 			{
 				Value = Minimum + (Maximum - Minimum) * Math.Max(0d, Math.Min(1d, e.GetPosition(touchRectangle).X / (touchRectangle.ActualWidth - slider.ActualWidth)));
 			}

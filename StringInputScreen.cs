@@ -24,7 +24,9 @@ namespace PThomann.Utilities.PopupScreenSystem
 		{
 			Title = "Enter Text";
 			Child.VerticalAlignment = VerticalAlignment.Top;
-			Child.Margin = new Thickness(0, 100, 0, 0);
+			Child.Margin = new Thickness(0, 20, 0, 0);
+			ButtonsProperties(VerticalAlignment.Top, new Thickness(0, 0, 0, 0));
+			//((Grid)Child).ShowGridLines = true;
 			text = new TextBoxElement()
 				{
 					Text = input,
@@ -33,7 +35,8 @@ namespace PThomann.Utilities.PopupScreenSystem
 					ShowLabel = false,
 					TextChangedAction = () => { input = text.Text; }
 				};
-			Elements = new ConfigurableScreenElement[] { text };
+			Elements = new ConfigurableScreenElement[] { text, new DistanceElement{ Height=350, IsEnabled=true } };
+			Child.VerticalAlignment = VerticalAlignment.Top;
 			Button[] arr = MakeDialogButtons(CustomScreenDialogButtons.OkCancel).ToArray();
 			arr[1].Content = "Submit";
 			Buttons = arr;

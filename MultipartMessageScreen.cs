@@ -77,6 +77,27 @@ namespace PThomann.Utilities.PopupScreenSystem
 			return hb;
 		}
 		/// <summary>
+		/// Add a Hyperlink to the StackPanel.
+		/// </summary>
+		/// <param name="text">visible text of the link</param>
+		/// <param name="action">Action to perform when clicked.</param>
+		/// <returns>the added HyperlinkButton, in case you want to modify it.</returns>
+		public HyperlinkButton AddHyperlink(string text, Action action)
+		{
+			HyperlinkButton hb = new HyperlinkButton()
+			{
+				Content = text,
+				//NavigateUri = uri,
+				FontSize = 26,
+				Foreground = link,
+				HorizontalAlignment = HorizontalAlignment.Center,
+				Margin = new Thickness(5)
+			};
+			hb.Click += (s, e) => { action(); };
+			panel.Children.Add(hb);
+			return hb;
+		}
+		/// <summary>
 		/// Add a block of Text to the StackPanel.
 		/// </summary>
 		/// <param name="text">the text contained.</param>

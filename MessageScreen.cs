@@ -15,8 +15,8 @@ namespace PThomann.Utilities.PopupScreenSystem
 		{
 			text = new TextBlock()
 			{
-				HorizontalAlignment = HorizontalAlignment.Center,
-				VerticalAlignment = VerticalAlignment.Center,
+				HorizontalAlignment = HorizontalAlignment.Stretch,
+				VerticalAlignment = VerticalAlignment.Stretch,
 				FontSize = 28,
 				Foreground = new SolidColorBrush(Colors.White),
 				TextAlignment = TextAlignment.Center,
@@ -28,6 +28,7 @@ namespace PThomann.Utilities.PopupScreenSystem
 			Message = message;
 			Title = title;
 		}
+
 		public MessageScreen()
 			: this("", "", null, true)
 		{ }

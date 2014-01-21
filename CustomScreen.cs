@@ -61,27 +61,31 @@ namespace PThomann.Utilities.PopupScreenSystem
 				grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(15) });
 				grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
 				grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(15) });
+				grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(90) });
+				grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(15) });
 
 				Grid.SetColumnSpan(bg, 5);
-				Grid.SetRowSpan(bg, 5);
+				Grid.SetRowSpan(bg, 7);
 				Grid.SetColumn(title, 1);
 				Grid.SetColumnSpan(title, 3);
 				Grid.SetRow(title, 1);
 				buttons.HorizontalAlignment = HorizontalAlignment.Stretch;
 				Grid.SetColumn(buttons, 3);
-				Grid.SetRow(buttons, 0);
-				Grid.SetRowSpan(buttons, 5);
+				Grid.SetRow(buttons, 2);
+				Grid.SetRowSpan(buttons, 3);
 				if (scrolling)
 				{
 					scroller.VerticalAlignment = VerticalAlignment.Top;
 					Grid.SetColumn(scroller, 1);
 					Grid.SetRow(scroller, 3);
+					Grid.SetRowSpan(scroller, 3);
 				}
 				else if (child != null)
 				{
 					child.VerticalAlignment = VerticalAlignment.Top;
 					Grid.SetColumn(child, 1);
 					Grid.SetRow(child, 3);
+					Grid.SetRowSpan(child, 3);
 				}
 			}
 			else// vertical
@@ -101,23 +105,26 @@ namespace PThomann.Utilities.PopupScreenSystem
 				grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(15) });
 
 				Grid.SetColumnSpan(bg, 3);
-				Grid.SetRowSpan(bg, 8);
+				Grid.SetRowSpan(bg, 7);
 				Grid.SetColumn(title, 1);
 				Grid.SetRow(title, 1);
 				buttons.HorizontalAlignment = HorizontalAlignment.Center;
 				Grid.SetColumn(buttons, 1);
 				Grid.SetRow(buttons, 5);
+				Grid.SetRowSpan(buttons, 1);
 				if (scrolling)
 				{
 					scroller.VerticalAlignment = VerticalAlignment.Center;
 					Grid.SetColumn(scroller, 1);
 					Grid.SetRow(scroller, 3);
+					Grid.SetRowSpan(scroller, 1);
 				}
 				else if (child != null)
 				{
 					child.VerticalAlignment = VerticalAlignment.Center;
 					Grid.SetColumn(child, 1);
 					Grid.SetRow(child, 3);
+					Grid.SetRowSpan(child, 1);
 				}
 			}
 		}
@@ -227,6 +234,12 @@ namespace PThomann.Utilities.PopupScreenSystem
 		}
 
 		#endregion PopupSystem internals
+
+		protected void ButtonsProperties(VerticalAlignment align, Thickness margin)
+		{
+			buttons.VerticalAlignment = align;
+			buttons.Margin = margin;
+		}
 
 		public CustomScreenBase(object scope, bool scroll)
 		{
@@ -549,6 +562,10 @@ namespace PThomann.Utilities.PopupScreenSystem
 					// when working without scroller, users must know for themselves how they want child to be aligned.
 					Grid.SetColumn(child, 1);
 					Grid.SetRow(child, 3);
+					if (Orientation == System.Windows.Controls.Orientation.Horizontal)
+						Grid.SetRowSpan(child, 3);
+					else
+						Grid.SetRowSpan(child, 1);
 					grid.Children.Add(child);
 				}
 			}
