@@ -91,7 +91,7 @@ namespace PThomann.Utilities.PopupScreenSystem
 					break;
 				default:
 					break;
-		}
+			}
 			if (tmp != null)
 				tmp.Hide();
 			((T)current).Show(parameters);
