@@ -205,13 +205,14 @@ namespace PThomann.Utilities.PopupScreenSystem
 			anim.From = 0.2;
 			anim.To = 1;
 			anim.Duration = new Duration(TimeSpan.FromSeconds(0.3));
-			anim.FillBehavior = FillBehavior.HoldEnd;
-			Storyboard sb = new Storyboard();
+			anim.FillBehavior = FillBehavior.Stop;
+			Storyboard sb = new Storyboard() { FillBehavior = FillBehavior.Stop };
 			Storyboard.SetTarget(anim, grid);
 			Storyboard.SetTargetProperty(anim, new PropertyPath("Opacity"));
 			sb.Children.Add(anim);
 
 			sb.Begin();
+			grid.Opacity = 1;
 			popup.IsOpen = true;
 		}
 
@@ -224,8 +225,8 @@ namespace PThomann.Utilities.PopupScreenSystem
 			anim.From = 1;
 			anim.To = 0.2;
 			anim.Duration = new Duration(TimeSpan.FromSeconds(0.2));
-			anim.FillBehavior = FillBehavior.HoldEnd;
-			Storyboard sb = new Storyboard();
+			anim.FillBehavior = FillBehavior.Stop;
+			Storyboard sb = new Storyboard() { FillBehavior = FillBehavior.Stop };
 			Storyboard.SetTarget(anim, grid);
 			Storyboard.SetTargetProperty(anim, new PropertyPath("Opacity"));
 			sb.Children.Add(anim);
