@@ -137,6 +137,7 @@ namespace PThomann.Utilities.PopupScreenSystem
 		/// <param name="e"></param>
 		void anim_Completed(object sender, EventArgs e)
 		{
+ //           MessageBox.Show("Completed");
 			popup.IsOpen = false;
 		}
 		/// <summary>
@@ -202,11 +203,11 @@ namespace PThomann.Utilities.PopupScreenSystem
 			}
 			PageOrientation = Popups.PageOrientation;
 			DoubleAnimation anim = new DoubleAnimation();
-			anim.From = 0.2;
+			anim.From = 0;
 			anim.To = 1;
 			anim.Duration = new Duration(TimeSpan.FromSeconds(0.3));
-			anim.FillBehavior = FillBehavior.Stop;
-			Storyboard sb = new Storyboard() { FillBehavior = FillBehavior.Stop };
+			anim.FillBehavior = FillBehavior.HoldEnd;
+			Storyboard sb = new Storyboard() { FillBehavior = FillBehavior.HoldEnd };
 			Storyboard.SetTarget(anim, grid);
 			Storyboard.SetTargetProperty(anim, new PropertyPath("Opacity"));
 			sb.Children.Add(anim);
@@ -223,14 +224,16 @@ namespace PThomann.Utilities.PopupScreenSystem
 		{
 			DoubleAnimation anim = new DoubleAnimation();
 			anim.From = 1;
-			anim.To = 0.2;
-			anim.Duration = new Duration(TimeSpan.FromSeconds(0.2));
-			anim.FillBehavior = FillBehavior.Stop;
-			Storyboard sb = new Storyboard() { FillBehavior = FillBehavior.Stop };
+			anim.To = 0;
+			anim.Duration = new Duration(TimeSpan.FromSeconds(0.3));
+			anim.FillBehavior = FillBehavior.HoldEnd;
+			Storyboard sb = new Storyboard() { FillBehavior = FillBehavior.HoldEnd };
+            sb.Duration = anim.Duration;
 			Storyboard.SetTarget(anim, grid);
 			Storyboard.SetTargetProperty(anim, new PropertyPath("Opacity"));
 			sb.Children.Add(anim);
-			anim.Completed += new EventHandler(anim_Completed);
+            sb.Completed += anim_Completed;
+//			anim.Completed += new EventHandler(anim_Completed);
 			sb.Begin();
 		}
 
