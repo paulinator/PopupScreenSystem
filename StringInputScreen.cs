@@ -38,7 +38,7 @@ namespace PThomann.Utilities.PopupScreenSystem
 			Elements = new ConfigurableScreenElement[] { text, new DistanceElement{ Height=350, IsEnabled=true } };
 			Child.VerticalAlignment = VerticalAlignment.Top;
 			Button[] arr = MakeDialogButtons(CustomScreenDialogButtons.OkCancel).ToArray();
-			arr[1].Content = "Submit";
+			// arr[1].Content = "Submit";
 			Buttons = arr;
 		}
 	}

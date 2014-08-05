@@ -193,7 +193,7 @@ namespace PThomann.Utilities.PopupScreenSystem
 
 			Elements = new ConfigurableScreenElement[] 
 			{
-				HSV,
+				HSV ,
 				r,g,b,
 				h,s,v
 			};
@@ -220,17 +220,14 @@ namespace PThomann.Utilities.PopupScreenSystem
 		{
 			ColorChooser cc = HSV.Child as ColorChooser;
 			Color color = cc.Color;
-			if (!locked)
-			{
-				locked = true;
-				h.Value = cc.Hue;
-				s.Value = cc.HSV.S;
-				v.Value = cc.HSV.V;
-				r.Value = color.R;
-				g.Value = color.G;
-				b.Value = color.B;
-				locked = false;
-			}
+			locked = true;
+			h.Value = cc.Hue;
+			s.Value = cc.HSV.S;
+			v.Value = cc.HSV.V;
+			r.Value = color.R;
+			g.Value = color.G;
+			b.Value = color.B;
+			locked = false;
 			sGrad.GradientStops[0].Color = ColorHelper.ToRGB(h.Value, 0.01d, v.Value);
 			sGrad.GradientStops[1].Color = ColorHelper.ToRGB(h.Value, 1d, v.Value);
 			vGrad.GradientStops[0].Color = ColorHelper.ToRGB(h.Value, s.Value, 0.01d);
@@ -263,39 +260,4 @@ namespace PThomann.Utilities.PopupScreenSystem
 			s.Title = title;
 		}
 	}
-	//public class ColorChoiceScreen : CustomScreenBase
-	//{
-	//	public ColorChoiceScreen()
-	//		: base("COLORCHOICE", false)
-	//	{
-	//		Child = new ColorChooser()
-	//		{
-	//			Width = 330,
-	//			Height = 330,
-	//		   // Angle = 45,
-	//			SpectrumThickness = 63,
-	//			TriangleOverlap = 7,
-	//			Hue=210,
-	//			Saturation = 0,
-	//			Luminosity = 0
-	//		};
-	//		Buttons = MakeDialogButtons(CustomScreenDialogButtons.OkCancel).ToArray();
-	//		Buttons[0].Content = "Apply";
-	//	}
-
-	//	public Color Color
-	//	{
-	//		get { return ((ColorChooser)Child).Color; }
-	//		set { ((ColorChooser)Child).Color = value; }
-	//	}
-
-	//	public static void Show(System.Windows.Media.Color color, string title)
-	//	{
-	//		if (!Popups.Show(ShowMode.OnTop, "COLORCHOICE"))
-	//			Popups.Show(new ColorChoiceScreen(), ShowMode.OnTop);
-	//		ColorChoiceScreen s = (ColorChoiceScreen)Popups.Current;
-	//		s.Color = color;
-	//		s.Title = title;
-	//	}
-	//}
 }
